@@ -10,6 +10,7 @@
       <link rel="stylesheet" href="public/lightgallery/css/lg-exif.min.css" />
       <link rel="stylesheet" href="public/core.css" />
       <link rel="stylesheet" href="public/theme.css" />
+      <link rel="stylesheet" href="public/justifiedgallery/justifiedGallery.min.css" />
   </head>
 
   <body>
@@ -34,70 +35,50 @@
       <!--
         Nested albums, if any
       -->
-      <div id="albums">
+      <div id="albums" class="justified-gallery">
       </div>
     
       <!--
         All photos and videos
       -->
-      <ul id="media" class="clearfix">
+      <ul id="media" class="clearfix justified-gallery">
           
-            <li data-src="media/large/test/DSC_0444.jpg"
-                data-sub-html=""
-                data-download-url="media/original/test/DSC_0444.jpg"
-                
-                data-filename="DSC_0444.jpg"
+          <div class="albumList"
+              data-sub-html=""
+              data-download-url="media/original/test/DSC_0444.jpg"data-src="media/large/test/DSC_0444.jpg"data-exthumbimage="media/thumbs/test/DSC_0444.jpg"
+              data-filename="DSC_0444.jpg"
           
-              >
-              <a href="media/original/test/DSC_0444.jpg">
-                <img src="media/thumbs/test/DSC_0444.jpg"
-                     width="120"
-                     height="120"
-                     alt="DSC_0444.jpg" />
+          ><a href="media/large/test/DSC_0444.jpg"><img src="media/small/test/DSC_0444.jpg" alt="DSC_0444.jpg" />
               </a>
-            </li>      
-            <li data-src="media/large/test/DSC_0449.jpg"
-                data-sub-html=""
-                data-download-url="media/original/test/DSC_0449.jpg"
-                
-                data-filename="DSC_0449.jpg"
           
-              >
-              <a href="media/original/test/DSC_0449.jpg">
-                <img src="media/thumbs/test/DSC_0449.jpg"
-                     width="120"
-                     height="120"
-                     alt="DSC_0449.jpg" />
-              </a>
-            </li>      
-            <li data-src="media/large/test/DSC_0468.jpg"
-                data-sub-html=""
-                data-download-url="media/original/test/DSC_0468.jpg"
-                
-                data-filename="DSC_0468.jpg"
+          </div>      
+          <div class="albumList"
+              data-sub-html=""
+              data-download-url="media/original/test/DSC_0449.jpg"data-src="media/large/test/DSC_0449.jpg"data-exthumbimage="media/thumbs/test/DSC_0449.jpg"
+              data-filename="DSC_0449.jpg"
           
-              >
-              <a href="media/original/test/DSC_0468.jpg">
-                <img src="media/thumbs/test/DSC_0468.jpg"
-                     width="120"
-                     height="120"
-                     alt="DSC_0468.jpg" />
+          ><a href="media/large/test/DSC_0449.jpg"><img src="media/small/test/DSC_0449.jpg" alt="DSC_0449.jpg" />
               </a>
-            </li>      
-            <li data-src="media/large/test/DSC_0583.jpg"
-                data-sub-html=""
-                data-download-url="media/original/test/DSC_0583.jpg"
-                
-                data-filename="DSC_0583.jpg"
           
-              >
-              <a href="media/original/test/DSC_0583.jpg">
-                <img src="media/thumbs/test/DSC_0583.jpg"
-                     width="120"
-                     height="120"
-                     alt="DSC_0583.jpg" />
+          </div>      
+          <div class="albumList"
+              data-sub-html=""
+              data-download-url="media/original/test/DSC_0468.jpg"data-src="media/large/test/DSC_0468.jpg"data-exthumbimage="media/thumbs/test/DSC_0468.jpg"
+              data-filename="DSC_0468.jpg"
+          
+          ><a href="media/large/test/DSC_0468.jpg"><img src="media/small/test/DSC_0468.jpg" alt="DSC_0468.jpg" />
               </a>
-            </li>  </ul>
+          
+          </div>      
+          <div class="albumList"
+              data-sub-html=""
+              data-download-url="media/original/test/DSC_0583.jpg"data-src="media/large/test/DSC_0583.jpg"data-exthumbimage="media/thumbs/test/DSC_0583.jpg"
+              data-filename="DSC_0583.jpg"
+          
+          ><a href="media/large/test/DSC_0583.jpg"><img src="media/small/test/DSC_0583.jpg" alt="DSC_0583.jpg" />
+              </a>
+          
+          </div>  </ul>
     
       <!--
         Optional footer
@@ -122,6 +103,7 @@
     <script src="public/lightgallery/js/lg-thumbnail.js"></script>
     <script src="public/lightgallery/js/lg-video.js"></script>
     <script src="public/lightgallery/js/lg-exif.min.js"></script>
+    <script src="public/justifiedgallery/jquery.justifiedGallery.min.js"></script>
 
     <script>
       $(document).ready(function() {
@@ -131,7 +113,23 @@
           loop : false,
           download: true,
           counter: true,
-          videojs: true
+          videojs: true,
+          exThumbImage: 'data-exthumbimage',
+        });
+
+        // Init justified gallery for albums
+        $("#albums").justifiedGallery({
+          margins: 10,
+          rowHeight: 300,
+          maxRowHeight: 325,
+        });
+
+        // Init justified gallery for photos
+        $("#media").justifiedGallery({
+          selector: '.albumList',
+          margins: 10,
+          rowHeight: 250,
+          maxRowHeight: 275,
         });
       });
     </script>
